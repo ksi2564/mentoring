@@ -19,6 +19,9 @@ public class UserEntity {
     @Column(name = "social_id", unique = true, nullable = false)
     private String socialId;
 
+    @Column(name = "email")
+    private String email;
+
     @Column(name = "nickname", nullable = false)
     private String nickname;
 
@@ -39,6 +42,7 @@ public class UserEntity {
         UserEntity userEntity = new UserEntity();
         userEntity.id = user.getId();
         userEntity.socialId = user.getSocialId();
+        userEntity.email = user.getEmail();
         userEntity.nickname = user.getNickname();
         userEntity.status = user.getStatus();
         userEntity.lastLoginAt = user.getLastLoginAt();
@@ -51,6 +55,7 @@ public class UserEntity {
         return User.builder()
                 .id(id)
                 .socialId(socialId)
+                .email(email)
                 .nickname(nickname)
                 .status(status)
                 .lastLoginAt(lastLoginAt)

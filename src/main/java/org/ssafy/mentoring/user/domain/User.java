@@ -11,6 +11,7 @@ import java.time.LocalDateTime;
 public class User {
     private final Long id;
     private final String socialId;
+    private final String email;
     private final String nickname;
     private final UserStatus status;
     private final LocalDateTime lastLoginAt;
@@ -18,9 +19,10 @@ public class User {
     private final LocalDateTime updatedAt;
 
     @Builder
-    public User(Long id, String socialId, String nickname, UserStatus status, LocalDateTime lastLoginAt, LocalDateTime createdAt, LocalDateTime updatedAt) {
+    public User(Long id, String socialId, String email, String nickname, UserStatus status, LocalDateTime lastLoginAt, LocalDateTime createdAt, LocalDateTime updatedAt) {
         this.id = id;
         this.socialId = socialId;
+        this.email = email;
         this.nickname = nickname;
         this.status = status;
         this.lastLoginAt = lastLoginAt;
