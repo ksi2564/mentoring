@@ -10,6 +10,7 @@ import org.springframework.security.oauth2.core.OAuth2AuthenticationException;
 import org.springframework.security.oauth2.core.user.DefaultOAuth2User;
 import org.springframework.security.oauth2.core.user.OAuth2User;
 import org.springframework.stereotype.Service;
+import org.ssafy.mentoring.common.service.port.DateTimeHolder;
 import org.ssafy.mentoring.user.domain.OAuth2Attributes;
 import org.ssafy.mentoring.user.domain.User;
 import org.ssafy.mentoring.user.service.port.UserRepository;
@@ -23,6 +24,7 @@ import java.util.Map;
 public class OAuth2UserService extends DefaultOAuth2UserService {
 
     private final UserRepository userRepository;
+    private final DateTimeHolder dateTimeHolder;
 
     @Override
     public OAuth2User loadUser(OAuth2UserRequest userRequest) throws OAuth2AuthenticationException {
@@ -53,7 +55,7 @@ public class OAuth2UserService extends DefaultOAuth2UserService {
         String socialId = oAuth2Attributes.getOAuth2UserInfo().getId();
         User findUser = userRepository.findBySocialId(socialId).orElse(null);
         if (findUser == null) {
-            userRepository.save(User.from(oAuth2Attributes.getOAuth2UserInfo()));
+            userRepository.save(User.from(oAuth2Attributes.getOAuth2UserInfo(), dateTimeHolder));
         }
     }
 }

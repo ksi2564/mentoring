@@ -2,6 +2,7 @@ package org.ssafy.mentoring.user.infrastructure;
 
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Repository;
+import org.ssafy.mentoring.common.domain.exception.ResourceNotFoundException;
 import org.ssafy.mentoring.user.domain.User;
 import org.ssafy.mentoring.user.service.port.UserRepository;
 
@@ -15,7 +16,7 @@ public class UserRepositoryImpl implements UserRepository {
 
     @Override
     public User getById(long id) {
-        return findById(id).orElseThrow(RuntimeException::new); // TODO: ResourceNotFoundException("도메인명", "id") 커스텀 예정
+        return findById(id).orElseThrow(() -> new ResourceNotFoundException("User", id));
     }
 
     @Override

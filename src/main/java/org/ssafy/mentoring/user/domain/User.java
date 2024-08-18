@@ -2,6 +2,7 @@ package org.ssafy.mentoring.user.domain;
 
 import lombok.Builder;
 import lombok.Getter;
+import org.ssafy.mentoring.common.service.port.DateTimeHolder;
 import org.ssafy.mentoring.config.security.userinfo.OAuth2UserInfo;
 
 import java.time.LocalDateTime;
@@ -27,14 +28,14 @@ public class User {
         this.updatedAt = updatedAt;
     }
 
-    public static User from(OAuth2UserInfo attributes) {
+    public static User from(OAuth2UserInfo attributes, DateTimeHolder dateTimeHolder) {
         return User.builder()
                 .socialId(attributes.getId())
                 .nickname(attributes.getNickname())
                 .status(UserStatus.MENTEE)
-                .lastLoginAt(LocalDateTime.now())
-                .createdAt(LocalDateTime.now())
-                .updatedAt(LocalDateTime.now())
+                .lastLoginAt(dateTimeHolder.getDateTime())
+                .createdAt(dateTimeHolder.getDateTime())
+                .updatedAt(dateTimeHolder.getDateTime())
                 .build();
     }
 }
