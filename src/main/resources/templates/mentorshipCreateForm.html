@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<head>
+    <title>멘토 등록 신청</title>
+</head>
+<body>
+<h2>멘토 등록 신청</h2>
+<form action="#" th:action="@{/mentors}" method="post">
+    <label for="userId">id:</label>
+    <input type="text" id="userId" name="userId" required /><br/>
+
+    <label for="title">제목:</label>
+    <input type="text" id="title" name="title" required /><br/>
+
+    <label for="content">내용:</label>
+    <textarea id="content" name="content" required ></textarea><br/>
+
+    <label for="fee">비용:</label>
+    <input id="fee" name="fee" required /><br/>
+
+    <button type="submit">제출</button>
+</form>
+</body>
+</html>
