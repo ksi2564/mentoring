@@ -1,5 +1,6 @@
 package org.ssafy.mentoring.mentorship.serivce;
 
+import jakarta.transaction.Transactional;
 import lombok.Builder;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
@@ -21,8 +22,12 @@ public class MentorshipServiceImpl implements MentorshipService {
     private final DateTimeHolder dateTimeHolder;
 
     @Override
+    @Transactional
     public Mentorship create(MentorshipCreate mentorshipCreate) {
         User mentor = userRepository.getById(mentorshipCreate.getUserId());
+        mentor = mentor.registerMentor(mentorshipCreate, dateTimeHolder);
+        userRepository.save(mentor);
+
         Mentorship mentorship = Mentorship.from(mentor, mentorshipCreate, dateTimeHolder);
         return mentorshipRepository.save(mentorship);
     }
