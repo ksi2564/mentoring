@@ -1,6 +1,5 @@
 package org.ssafy.mentoring.mentorship.domain;
 
-import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.ssafy.mentoring.mentorship.mock.TestDateTimeHolder;
 import org.ssafy.mentoring.user.domain.User;
@@ -8,7 +7,7 @@ import org.ssafy.mentoring.user.domain.UserStatus;
 
 import java.time.LocalDateTime;
 
-import static org.assertj.core.api.Assertions.*;
+import static org.assertj.core.api.Assertions.assertThat;
 
 class MentorshipTest {
 
@@ -27,16 +26,17 @@ class MentorshipTest {
                 .nickname("tester")
                 .status(UserStatus.MENTEE)
                 .build();
+        LocalDateTime localDateTime = LocalDateTime.of(2099, 12, 25, 0, 0, 0);
 
         // when
         Mentorship mentorship = Mentorship.from(mentor, mentorshipCreate,
-                new TestDateTimeHolder(LocalDateTime.of(2099, 12, 25, 0, 0, 0)));
+                new TestDateTimeHolder(localDateTime));
 
         // then
         assertThat(mentorship.getTitle()).isEqualTo("test title");
         assertThat(mentorship.getContent()).isEqualTo("test content");
         assertThat(mentorship.getFee()).isEqualTo(10);
-        assertThat(mentorship.getCreatedAt()).isEqualTo(LocalDateTime.of(2099, 12, 25, 0, 0, 0));
+        assertThat(mentorship.getCreatedAt()).isEqualTo(localDateTime);
     }
 
 }
