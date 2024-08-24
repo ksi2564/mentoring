@@ -24,9 +24,9 @@ public class MentorshipAvailability {
         this.mentorship = mentorship;
     }
 
-    public static List<MentorshipAvailability> from(Mentorship mentorship, MentorshipCreate mentorshipCreate, DateTimeHolder dateTimeHolder) {
+    public static List<MentorshipAvailability> from(Mentorship mentorship, List<LocalDateTime> availableSlots, DateTimeHolder dateTimeHolder) {
         LocalDateTime now = dateTimeHolder.getDateTime();
-        return mentorshipCreate.getAvailableSlots().stream()
+        return availableSlots.stream()
                 .map(slot -> MentorshipAvailability.builder()
                         .slot(slot)
                         .createdAt(now)
