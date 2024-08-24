@@ -4,7 +4,6 @@ import lombok.Builder;
 import lombok.Getter;
 import org.ssafy.mentoring.common.service.port.DateTimeHolder;
 import org.ssafy.mentoring.config.security.userinfo.OAuth2UserInfo;
-import org.ssafy.mentoring.mentorship.domain.MentorshipCreate;
 
 import java.time.LocalDateTime;
 
@@ -42,11 +41,11 @@ public class User {
                 .build();
     }
 
-    public User registerMentor(MentorshipCreate mentorshipCreate, DateTimeHolder dateTimeHolder) {
+    public User upgradeToMentor(String email, DateTimeHolder dateTimeHolder) {
         return User.builder()
                 .id(id)
                 .socialId(socialId)
-                .email(mentorshipCreate.getEmail())
+                .email(email)
                 .nickname(nickname)
                 .status(UserStatus.MENTOR)
                 .lastLoginAt(lastLoginAt)

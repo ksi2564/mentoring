@@ -53,7 +53,7 @@ class UserTest {
         LocalDateTime localDateTime = LocalDateTime.of(2100, 1, 1, 0, 0, 0);
 
         // when
-        user = user.registerMentor(mentorshipCreate, new TestDateTimeHolder(localDateTime));
+        user = user.upgradeToMentor(mentorshipCreate.getEmail(), new TestDateTimeHolder(localDateTime));
 
         // then
         assertThat(user.getEmail()).isEqualTo("test1@example.com");
