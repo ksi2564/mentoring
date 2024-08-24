@@ -1,4 +1,4 @@
-package org.ssafy.mentoring.mentorship.mock;
+package org.ssafy.mentoring.mock;
 
 import lombok.RequiredArgsConstructor;
 import org.ssafy.mentoring.common.service.port.DateTimeHolder;

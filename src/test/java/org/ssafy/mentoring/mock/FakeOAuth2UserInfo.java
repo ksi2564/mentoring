@@ -1,4 +1,4 @@
-package org.ssafy.mentoring.mentorship.mock;
+package org.ssafy.mentoring.mock;
 
 import org.ssafy.mentoring.config.security.userinfo.OAuth2UserInfo;
 
