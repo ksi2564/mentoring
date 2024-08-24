@@ -11,8 +11,8 @@ import org.ssafy.mentoring.mentorship.domain.MentorshipAvailability;
 import org.ssafy.mentoring.mentorship.domain.MentorshipCreate;
 import org.ssafy.mentoring.mentorship.serivce.port.MentorshipAvailabilityRepository;
 import org.ssafy.mentoring.mentorship.serivce.port.MentorshipRepository;
+import org.ssafy.mentoring.user.controller.port.UserService;
 import org.ssafy.mentoring.user.domain.User;
-import org.ssafy.mentoring.user.service.port.UserRepository;
 
 import java.util.List;
 
@@ -23,17 +23,15 @@ public class MentorshipServiceImpl implements MentorshipService {
 
     private final MentorshipAvailabilityRepository mentorshipAvailabilityRepository;
     private final MentorshipRepository mentorshipRepository;
-    private final UserRepository userRepository;
+    private final UserService userService;
     private final DateTimeHolder dateTimeHolder;
 
     @Override
     @Transactional
     public Mentorship create(MentorshipCreate mentorshipCreate) {
-        User user = userRepository.getById(mentorshipCreate.getUserId());
-        User mentor = user.upgradeToMentor(mentorshipCreate.getEmail(), dateTimeHolder);
-        userRepository.save(mentor);
+        User user = userService.upgradeToMentor(mentorshipCreate.getUserId(), mentorshipCreate.getEmail());
 
-        Mentorship mentorship = Mentorship.from(mentor, mentorshipCreate, dateTimeHolder);
+        Mentorship mentorship = Mentorship.from(user, mentorshipCreate, dateTimeHolder);
         mentorship = mentorshipRepository.save(mentorship);
         List<MentorshipAvailability> availabilities = MentorshipAvailability.from(mentorship, mentorshipCreate, dateTimeHolder);
         mentorshipAvailabilityRepository.saveAll(availabilities);
