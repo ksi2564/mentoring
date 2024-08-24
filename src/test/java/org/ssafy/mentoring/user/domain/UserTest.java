@@ -3,8 +3,8 @@ package org.ssafy.mentoring.user.domain;
 import org.junit.jupiter.api.Test;
 import org.ssafy.mentoring.config.security.userinfo.OAuth2UserInfo;
 import org.ssafy.mentoring.mentorship.domain.MentorshipCreate;
-import org.ssafy.mentoring.mentorship.mock.FakeOAuth2UserInfo;
-import org.ssafy.mentoring.mentorship.mock.TestDateTimeHolder;
+import org.ssafy.mentoring.mock.FakeOAuth2UserInfo;
+import org.ssafy.mentoring.mock.TestDateTimeHolder;
 
 import java.time.LocalDateTime;
 import java.util.Map;

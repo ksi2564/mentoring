@@ -1,7 +1,7 @@
 package org.ssafy.mentoring.mentorship.domain;
 
 import org.junit.jupiter.api.Test;
-import org.ssafy.mentoring.mentorship.mock.TestDateTimeHolder;
+import org.ssafy.mentoring.mock.TestDateTimeHolder;
 import org.ssafy.mentoring.user.domain.User;
 import org.ssafy.mentoring.user.domain.UserStatus;
 
