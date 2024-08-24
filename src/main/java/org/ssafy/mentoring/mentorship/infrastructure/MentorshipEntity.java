@@ -47,7 +47,7 @@ public class MentorshipEntity {
         mentorshipEntity.title = mentorship.getTitle();
         mentorshipEntity.content = mentorship.getContent();
         mentorshipEntity.fee = mentorship.getFee();
-        mentorshipEntity.mentorshipStatus = mentorship.getMentorshipStatus();
+        mentorshipEntity.mentorshipStatus = mentorship.getStatus();
         mentorshipEntity.createdAt = mentorship.getCreatedAt();
         mentorshipEntity.updatedAt = mentorship.getUpdatedAt();
         mentorshipEntity.mentor = UserEntity.from(mentorship.getMentor());
@@ -61,7 +61,7 @@ public class MentorshipEntity {
                 .title(title)
                 .content(content)
                 .fee(fee)
-                .mentorshipStatus(mentorshipStatus)
+                .status(mentorshipStatus)
                 .createdAt(createdAt)
                 .updatedAt(updatedAt)
                 .mentor(mentor.toModel())

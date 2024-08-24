@@ -13,18 +13,18 @@ public class Mentorship {
     private final String title;
     private final String content;
     private final Integer fee;
-    private final MentorshipStatus mentorshipStatus;
+    private final MentorshipStatus status;
     private final LocalDateTime createdAt;
     private final LocalDateTime updatedAt;
     private final User mentor;
 
     @Builder
-    public Mentorship(Long id, String title, String content, Integer fee, MentorshipStatus mentorshipStatus, LocalDateTime createdAt, LocalDateTime updatedAt, User mentor) {
+    public Mentorship(Long id, String title, String content, Integer fee, MentorshipStatus status, LocalDateTime createdAt, LocalDateTime updatedAt, User mentor) {
         this.id = id;
         this.title = title;
         this.content = content;
         this.fee = fee;
-        this.mentorshipStatus = mentorshipStatus;
+        this.status = status;
         this.createdAt = createdAt;
         this.updatedAt = updatedAt;
         this.mentor = mentor;
@@ -35,7 +35,7 @@ public class Mentorship {
                 .title(mentorshipCreate.getTitle())
                 .content(mentorshipCreate.getContent())
                 .fee(mentorshipCreate.getFee())
-                .mentorshipStatus(MentorshipStatus.APPROVED)
+                .status(MentorshipStatus.APPROVED)
                 .createdAt(dateTimeHolder.getDateTime())
                 .updatedAt(dateTimeHolder.getDateTime())
                 .mentor(mentor)
