@@ -1,7 +1,10 @@
 package org.ssafy.mentoring.mock;
 
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.ssafy.mentoring.common.domain.exception.ResourceNotFoundException;
 import org.ssafy.mentoring.mentorship.domain.Mentorship;
+import org.ssafy.mentoring.mentorship.domain.MentorshipStatus;
 import org.ssafy.mentoring.mentorship.serivce.port.MentorshipRepository;
 
 import java.util.ArrayList;
@@ -45,5 +48,11 @@ public class FakeMentorshipRepository implements MentorshipRepository {
             data.add(mentorship);
             return mentorship;
         }
+    }
+
+    // TODO: 테스트 코드 작성하면서 같이 작성할 것
+    @Override
+    public Page<Mentorship> findAllByStatus(MentorshipStatus status, Pageable pageable) {
+        return null;
     }
 }

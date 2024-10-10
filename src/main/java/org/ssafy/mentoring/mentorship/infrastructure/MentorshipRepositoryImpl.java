@@ -1,9 +1,12 @@
 package org.ssafy.mentoring.mentorship.infrastructure;
 
 import lombok.RequiredArgsConstructor;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Repository;
 import org.ssafy.mentoring.common.domain.exception.ResourceNotFoundException;
 import org.ssafy.mentoring.mentorship.domain.Mentorship;
+import org.ssafy.mentoring.mentorship.domain.MentorshipStatus;
 import org.ssafy.mentoring.mentorship.serivce.port.MentorshipRepository;
 
 import java.util.Optional;
@@ -27,5 +30,10 @@ public class MentorshipRepositoryImpl implements MentorshipRepository {
     @Override
     public Mentorship save(Mentorship mentorship) {
         return mentorshipJpaRepository.save(MentorshipEntity.from(mentorship)).toModel();
+    }
+
+    @Override
+    public Page<Mentorship> findAllByStatus(MentorshipStatus status, Pageable pageable) {
+        return mentorshipJpaRepository.findAllByStatus(status, pageable);
     }
 }

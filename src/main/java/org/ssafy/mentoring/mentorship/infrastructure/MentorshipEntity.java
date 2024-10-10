@@ -28,7 +28,7 @@ public class MentorshipEntity {
 
     @Column(name = "status", nullable = false)
     @Enumerated(EnumType.STRING)
-    private MentorshipStatus mentorshipStatus;
+    private MentorshipStatus status;
 
     @Column(name = "created_at", nullable = false, updatable = false)
     private LocalDateTime createdAt;
@@ -47,7 +47,7 @@ public class MentorshipEntity {
         mentorshipEntity.title = mentorship.getTitle();
         mentorshipEntity.content = mentorship.getContent();
         mentorshipEntity.fee = mentorship.getFee();
-        mentorshipEntity.mentorshipStatus = mentorship.getStatus();
+        mentorshipEntity.status = mentorship.getStatus();
         mentorshipEntity.createdAt = mentorship.getCreatedAt();
         mentorshipEntity.updatedAt = mentorship.getUpdatedAt();
         mentorshipEntity.mentor = UserEntity.from(mentorship.getMentor());
@@ -61,7 +61,7 @@ public class MentorshipEntity {
                 .title(title)
                 .content(content)
                 .fee(fee)
-                .status(mentorshipStatus)
+                .status(status)
                 .createdAt(createdAt)
                 .updatedAt(updatedAt)
                 .mentor(mentor.toModel())
