@@ -1,6 +1,7 @@
 package org.ssafy.mentoring.mock;
 
 import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageImpl;
 import org.springframework.data.domain.Pageable;
 import org.ssafy.mentoring.common.domain.exception.ResourceNotFoundException;
 import org.ssafy.mentoring.mentorship.domain.Mentorship;
@@ -50,9 +51,16 @@ public class FakeMentorshipRepository implements MentorshipRepository {
         }
     }
 
-    // TODO: 테스트 코드 작성하면서 같이 작성할 것
     @Override
     public Page<Mentorship> findAllByStatus(MentorshipStatus status, Pageable pageable) {
-        return null;
+        List<Mentorship> pageContent = data.stream()
+                .filter(item -> item.getStatus().equals(status))
+                .skip(pageable.getOffset())
+                .limit(pageable.getPageSize())
+                .toList();
+        long totalElements = data.stream()
+                .filter(item -> item.getStatus().equals(status))
+                .count();
+        return new PageImpl<>(pageContent, pageable, totalElements);
     }
 }
